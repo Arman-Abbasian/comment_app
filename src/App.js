@@ -1,11 +1,11 @@
-import axios from 'axios';
+import Discussion from "./container/Disscussion";
 
 
 function App() {
   return (
     
     <div className="App">
-         
+         <Discussion />
     </div>
   );
 }
