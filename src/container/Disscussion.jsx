@@ -29,6 +29,20 @@ const Discussion = () => {
 const clickHandler=(id)=>{
   setCommentId(id)
 }
+const removeHandler=(id)=>{
+  axios.delete(`http://localhost:4000/comments/${id}`)
+  .then(res=>{
+    axios.get(`http://localhost:4000/comments`)
+    .then(res=>{
+      setComments(res.data);
+      setCommentId(null)
+    })
+  })
+  .catch(err=>{
+        setError(err)
+        toast.error(error.message)
+  })
+}
 
 
 
@@ -38,7 +52,7 @@ const clickHandler=(id)=>{
     return ( 
         <div className="flex flex-col gap-6 p-4">
             <CommentList comments={comments} clickHandler={clickHandler} commentId={commentId}  />
-            <FullComments commentId={commentId} />
+            <FullComments commentId={commentId} onRemove={removeHandler}/>
             <NewComment setComments={setComments} />
         </div>
      );

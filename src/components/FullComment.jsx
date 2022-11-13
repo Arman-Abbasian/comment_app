@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
 
-const FullComments = ({name,email,body,commentId}) => {
+const FullComments = ({name,email,body,commentId,onRemove}) => {
     const [clickedComment,setClickedComment]=useState(null);
     const [loading,setLoading]=useState(true);
     const [error,setError]=useState(null);
@@ -39,7 +39,7 @@ const FullComments = ({name,email,body,commentId}) => {
                 <p>{clickedComment.body}</p>
             </div>
             <div className="flex items-center justify-center">
-                <button className="bg-red-500 p-4 rounded-md"><AiOutlineDelete /></button>
+                <button onClick={()=>onRemove(commentId)} className="bg-red-500 p-4 rounded-md"><AiOutlineDelete /></button>
             </div>
         </div>
      );
