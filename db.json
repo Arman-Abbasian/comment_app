@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "productName": "cover 206",
+      "carName": "peugeot 206",
+      "productDescription": "this product is used in a car to protect form harm to car clutch",
+      "productNumber": 1,
+      "productPrice": "45 $",
+      "productImage": "/images/206.webp"
+    },
+    {
+      "id": 2,
+      "productName": "cover 405",
+      "carName": "peugeot 405",
+      "productDescription": "this product is used in a car to protect form harm to car clutch",
+      "productNumber": 1,
+      "productPrice": "38 $",
+      "productImage": "images/405-Jc.webp"
+    },
+    {
+      "id": 3,
+      "productName": "cover tiba",
+      "carName": "tiba",
+      "productDescription": "this product is used in a car to protect form harm to car clutch",
+      "productNumber": 1,
+      "productPrice": "25 $",
+      "productImage": "/images/tiba.webp"
+    },
+    {
+      "id": 4,
+      "productName": "cover pride",
+      "carName": "pride",
+      "productDescription": "this product is used in a car to protect form harm to car clutch",
+      "productNumber": 1,
+      "productPrice": "15 $",
+      "productImage": "/images/prid-pc.webp"
+    },
+    {
+      "id": 5,
+      "productName": "cover peykan",
+      "carName": "peykan",
+      "productDescription": "this product is used in a car to protect form harm to car clutch",
+      "productNumber": 1,
+      "productPrice": "9 $",
+      "productImage": "/images/peykan.webp"
+    }
+  ],
+  "productBasket": []
+}
