@@ -5,24 +5,22 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const FullComments = ({name,email,body,commentId}) => {
-    const [clickedCommentId,setClickedCommentId]=useState(commentId);
     const [clickedComment,setClickedComment]=useState(null);
     const [loading,setLoading]=useState(true);
     const [error,setError]=useState(null);
 
     useEffect(()=>{
-        if(clickedCommentId){
+        if(commentId){
             axios.get(`http://localhost:4000/comments/${commentId}`)
             .then(res=>{
                 setClickedComment(res.data);
+                setLoading(false)
                 console.log(clickedComment)
             })
             .catch(err=>toast.error(err.message))
         }
     },[commentId]);
-    console.log(clickedCommentId)
-
-    if(!clickedCommentId) return <p>no comment choosed yet</p>
+    if(!commentId) return <p>no comment choosed yet</p>
     if (loading) return <p>loading ...</p>
     if (error) return <p>{error.message}</p>
 

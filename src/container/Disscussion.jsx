@@ -36,7 +36,7 @@ const clickHandler=(id)=>{
        if (loading) return <p>loading ...</p>
        if (error) return <p>{error.message}</p> 
     return ( 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 p-4">
             <CommentList comments={comments} clickHandler={clickHandler} commentId={commentId}  />
             <FullComments commentId={commentId} />
             <NewComment setComments={setComments} />
