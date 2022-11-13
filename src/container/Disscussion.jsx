@@ -9,6 +9,7 @@ const Discussion = () => {
     const [comments,setComments]=useState(null);
     const [loading,setLoading]=useState(true);
     const [error,setError]=useState("");
+    const [commentId,setCommentId]=useState(null);
 
 
     useEffect(() => {
@@ -25,16 +26,20 @@ const Discussion = () => {
     getUsers();
 },[]);
 
+const clickHandler=(id)=>{
+  setCommentId(id)
+}
+
 
 
 
        if (loading) return <p>loading ...</p>
        if (error) return <p>{error.message}</p> 
     return ( 
-        <div>
-            <CommentList comments={comments} />
-            <FullComments />
-            <NewComment />
+        <div className="flex flex-col gap-6">
+            <CommentList comments={comments} clickHandler={clickHandler} commentId={commentId}  />
+            <FullComments commentId={commentId} />
+            <NewComment setComments={setComments} />
         </div>
      );
 }
