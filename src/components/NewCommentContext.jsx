@@ -1,23 +1,23 @@
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useComments, useCommentsActions } from "../Providers/CommentProvider";
 
-const NewCommentContext = ({setComments}) => {
+const NewCommentContext = () => {
     const [formValues,setFormValues]=useState({name:"",email:"",body:""});
+    const comments=useComments();
+    const {addOneComment}=useCommentsActions();
+
     const changeHandler=(e)=>{
         setFormValues({...formValues,[e.target.name]:e.target.value});
     };
+
     const submitHandler=(e)=>{
         e.preventDefault();
-        axios.post(`http://localhost:4000/comments`,formValues)
-        .then(res=>{
-            axios.get(`http://localhost:4000/comments`)
-            .then(res=>setComments(res.data));
-            setFormValues({name:"",email:"",body:""})
-        })
-        .catch(err=>toast.error(err.message))
-        
+        addOneComment(formValues);
+        setFormValues({name:"",email:"",body:""})
     }
+   
     return ( 
         <div>
             <form onSubmit={submitHandler} className="flex flex-col gap-3">

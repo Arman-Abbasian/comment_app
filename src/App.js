@@ -1,6 +1,7 @@
 import CommentList from "./components/CommentsList";
 import CommentListContext from "./components/CommentsListContext";
 import FullCommentsContext from "./components/FullCommentContext";
+import NewCommentContext from "./components/NewCommentContext";
 import Discussion from "./container/Disscussion";
 import CommentProvider from "./Providers/CommentProvider";
 
@@ -13,6 +14,7 @@ function App() {
          <CommentProvider>
             <CommentListContext />
             <FullCommentsContext />
+            <NewCommentContext />
          </CommentProvider>
     </div>
   );
