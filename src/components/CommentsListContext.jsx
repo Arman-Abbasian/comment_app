@@ -20,7 +20,7 @@ const CommentListContext = () => {
     if (comment.loading) return <p>loading...</p>
     if (comment.error!=='') return <p>{comment.error.message}</p>
     return ( 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex items-center justify-center flex-wrap gap-3 container mx-auto">
             {comment.comment.map(item=>(
                 <CommentContext key={item.id} name={item.name} email={item.email} 
                 clickHandler={()=>setNewId(item.id)}/>
