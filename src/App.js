@@ -4,6 +4,8 @@ import FullCommentsContext from "./components/FullCommentContext";
 import NewCommentContext from "./components/NewCommentContext";
 import Discussion from "./container/Disscussion";
 import CommentProvider from "./Providers/CommentProvider";
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
             <FullCommentsContext />
             <NewCommentContext />
          </CommentProvider>
+         <ToastContainer />
     </div>
   );
 }

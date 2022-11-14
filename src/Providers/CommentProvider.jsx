@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { useState } from "react";
 import { createContext } from "react";
+import { toast } from "react-toastify";
 
 const CommentContext=createContext();
 const CommentContextDispatcher=createContext();
@@ -12,7 +13,7 @@ const CommentProvider = ({children}) => {
     const [comments,setComments]=useState({comment:[],loading:false,error:""});
     const [singleComment,setSingleComment]=useState({singleComment:null,loading:false,error:"",message:''})
     return ( 
-        <div>
+        <div className="p-4">
             <CommentContext.Provider value={comments}>
                 <CommentContextDispatcher.Provider value={setComments}>
                     <SingleCommentContext.Provider value={singleComment}>
@@ -40,11 +41,19 @@ export const useCommentsActions=()=>{
     }
     const addOneComment=(payload)=>{
             axios.post(`http://localhost:4000/comments`,payload)
-            .then(res=>initialLoading())
-            .catch(err=>console.log(err.message));
-        };    
+            .then(res=>{
+                initialLoading();
+                toast.success("new data added successfully")
+            })
+            .catch(err=>toast.error(err.message));
+        };
+    const deleteOneComment=(payload)=>{
+        axios.delete(`http://localhost:4000/comments/${payload}`)
+        .then(res=>initialLoading())
+        .catch(err=>toast.error(err.message));
+    };     
         
-            return {initialLoading,addOneComment};
+            return {initialLoading,addOneComment,deleteOneComment};
     };
 
 
@@ -55,18 +64,26 @@ export const useSingleCommentsActions=()=>{
     const singleComment=useSingleComment();
     const setSingleComment=useContext(SingleCommentContextDispatcher);
 
-    const setNewId=(payload)=>{
+    const setNewId=(payload=null)=>{
        if(!payload){
         setSingleComment({singleComment:null,loading:false,error:'',message:'select a comment'})
        }else{
+        setSingleComment({singleComment:null,loading:true,error:'',message:''})
         axios.get(`http://localhost:4000/comments/${payload}`)
        .then(res=>{
+        console.log(res.data)
         setSingleComment({singleComment:res.data,loading:false,error:'',message:''})
        })
        .catch(err=>{
         setSingleComment({singleComment:null,loading:false,error:err.message,message:''})
        })
        }
-    }       
-            return {setNewId};
+    }  ;
+    
+    const deleteOneCommentId=()=>{
+        setSingleComment({singleComment:null,loading:false,error:'',message:'select a comment'});
+        toast.success("data removed successfully")
+    }
+
+            return {setNewId,deleteOneCommentId};
     }
