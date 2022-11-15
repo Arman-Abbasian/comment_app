@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useSelector ,useDispatch } from "react-redux";
 import { useComments, useCommentsActions, useSingleComment, useSingleCommentsActions } from "../Providers/CommentProvider";
-import { fetchTodos } from "../redux/comments/commentsActions";
+import { fetchComment } from "../redux/comment/commentActions";
+import { fetchComments } from "../redux/comments/commentsActions";
 import CommentContext from "./CommentContext";
 
 
@@ -10,13 +11,13 @@ const CommentListRedux = () => {
     const comments=useSelector(state=>state.comments);
     const comment=useSelector(state=>state.comment);
     const dispatch=useDispatch();
-    console.log(comments)
+
     useEffect(()=>{
-        dispatch(fetchTodos());
+        dispatch(fetchComments());
 
     },[]);
     const clickHandler=(id)=>{
-        dispatch()
+        dispatch(fetchComment(id))
     }
     if (comments.loading) return <p>loading...</p>
     if (comments.error!=='') return <p>{comments.error.message}</p>

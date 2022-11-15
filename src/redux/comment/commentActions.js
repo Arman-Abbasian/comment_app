@@ -3,18 +3,18 @@ import axios from "axios";
 import { FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED } from "./commentType";
 
 
-const fetchTodosRequest=()=>{
+const fetchCommentRequest=()=>{
     return{
         type:FETCH_ONE_COMMENT_REQUEST
     }
 };
-const fetchTodosFailure=(payload)=>{
+const fetchCommentFailure=(payload)=>{
     return{
         type:FETCH_ONE_COMMENT_FAILURE,
         payload
     }
 };
-const fetchTodosSuccess=(payload)=>{
+const fetchCommentSuccess=(payload)=>{
     return{
         type:FETCH_ONE_COMMENT_SUCCESS,
         payload
@@ -27,16 +27,15 @@ export const noCommentSelected=()=>{
 };
 
 
-export const fetchTodos=()=>{
+export const fetchComment=(payload)=>{
     return function(dispatch){
-        dispatch(fetchTodosRequest());
-        axios.get(`http://localhost:4000/comments`)
+        dispatch(fetchCommentRequest());
+        axios.get(`http://localhost:4000/comments/${payload}`)
         .then(res=>{
-            dispatch(fetchTodosSuccess(res.data));
-            console.log(res.data)
+            dispatch(fetchCommentSuccess(res.data));
         })
         .catch(err=>{
-            dispatch(fetchTodosFailure(err.message))
+            dispatch(fetchCommentFailure(err.message))
         })
     }
 }

@@ -28,7 +28,7 @@ function App() {
 
          <Provider store={store}>
             <CommentListRedux />
-            {/* <FullCommentRedux /> */}
+            <FullCommentRedux />
             <NewCommentRedux />
          </Provider>
 

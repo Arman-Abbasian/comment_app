@@ -20,13 +20,12 @@ const fetchTodosSuccess=(payload)=>{
     }
 };
 
-export const fetchTodos=()=>{
+export const fetchComments=()=>{
     return function(dispatch){
         dispatch(fetchTodosRequest());
         axios.get(`http://localhost:4000/comments`)
         .then(res=>{
             dispatch(fetchTodosSuccess(res.data));
-            console.log(res.data)
         })
         .catch(err=>{
             dispatch(fetchTodosFailure(err.message))
