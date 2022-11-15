@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { deleteCommentId, fetchComment, noCommentSelected } from "../redux/comment/commentActions";
+import { deleteCommentId, fetchComment} from "../redux/comment/commentActions";
 import { deleteOneComment, fetchComments } from "../redux/comments/commentsActions";
 
 const FullCommentRedux = () => {
@@ -10,24 +9,22 @@ const FullCommentRedux = () => {
     const dispatch=useDispatch();
 
     useEffect(()=>{
-       if(!comment.comment){
-        dispatch( noCommentSelected());
-        console.log(comment.message) 
-       }else{
+        console.log(comment)
+       if(comment.message===''){
        dispatch(fetchComment());
-    }
-    console.log(comment)
+       }
     },[]);
 
     const deleteHandler=(id)=>{
         dispatch(deleteOneComment(id));
         dispatch(fetchComments());
         dispatch(deleteCommentId());
+        console.log(comment)
     }
 
     if(comment.message) return <p>{comment.message}</p>
     if (comment.loading) return <p>loading ...</p>
-    if (comment.error) return <p>{comment.error.message}</p>
+    if (comment.error) return <p>{comment.error}</p>
     if(comment.comment)
     return ( 
         <div className="bg-blue-300 p-1 overflow-hidden w-full md:w-1/2 xl:w-1/3 py-5 flex flex-col gap-4 rounded-sm">

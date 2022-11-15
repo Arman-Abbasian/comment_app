@@ -5,24 +5,24 @@ const initialState={
     comment:null,
     error:"",
     laoding:false,
-    message:""
+    message:"click on one comment"
 }
 export const commentReducer=(state=initialState,action)=>{
     switch (action.type) {
         case FETCH_ONE_COMMENT_REQUEST:{
-            return {...state,comment:null,error:"",laoding:true,message:""}
+            return {comment:null,error:"",laoding:true,message:""}
         };
         case FETCH_ONE_COMMENT_SUCCESS:{
-            return {...state,comment:action.payload,error:"",laoding:false,message:""}
+            return {comment:action.payload,error:"",laoding:false,message:""}
         };
         case FETCH_ONE_COMMENT_FAILURE:{
-            return {...state,comment:null,error:action.payload,laoding:false,message:""}
+            return {comment:null,error:action.payload,laoding:false,message:""}
         };
         case NO_COMMENT_SELECTED:{
-            return {...state,comment:null,error:"",laoding:false,message:"click on the comment"}
+            return {comment:null,error:"",laoding:false,message:"click on one comment"}
         } ;
         case DELETE_COMMENT_ID:{
-            return {...state,comment:null,error:"",laoding:false,message:"click on the comment"}
+            return {comment:null,error:"",laoding:false,message:"click on one comment"}
         }  
         default:
             return state;

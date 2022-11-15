@@ -12,12 +12,13 @@ import CommentListRedux from "./components/CommentsListRedux";
 import FullCommentRedux from "./components/FullCommentRedux";
 import NewCommentRedux from "./components/NewCommentRedux";
 import store from './redux/store';
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
   return (
     
-    <div className="App">
+    <div className="App flex flex-col gap-4 p-4">
          {/* <Discussion /> */}
 
          {/* <CommentProvider>
@@ -32,6 +33,7 @@ function App() {
             <NewCommentRedux />
          </Provider>
 
+         <Toaster />
          <ToastContainer />
     </div>
   );
