@@ -1,6 +1,6 @@
 import { type } from "@testing-library/user-event/dist/type";
 import axios from "axios";
-import { FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED } from "./commentType";
+import { DELETE_COMMENT_ID, FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED } from "./commentType";
 
 
 const fetchCommentRequest=()=>{
@@ -20,12 +20,6 @@ const fetchCommentSuccess=(payload)=>{
         payload
     }
 };
-export const noCommentSelected=()=>{
-    return{
-        type:NO_COMMENT_SELECTED
-    }
-};
-
 
 export const fetchComment=(payload)=>{
     return function(dispatch){
@@ -38,4 +32,17 @@ export const fetchComment=(payload)=>{
             dispatch(fetchCommentFailure(err.message))
         })
     }
+};
+export const noCommentSelected=()=>{
+    return{
+        type:NO_COMMENT_SELECTED
+    }
+};
+export const deleteCommentId=()=>{
+    return {
+        return :DELETE_COMMENT_ID
+    }
 }
+
+
+

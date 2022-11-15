@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import {useDispatch} from 'react-redux';
 import { useComments, useCommentsActions } from "../Providers/CommentProvider";
+import { addOneComment, fetchComments } from "../redux/comments/commentsActions";
 
 const NewCommentRedux = () => {
     const [formValues,setFormValues]=useState({name:"",email:"",body:""});
-    const comments=useComments();
-    const {addOneComment}=useCommentsActions();
+    const dispatch=useDispatch()
 
     const changeHandler=(e)=>{
         setFormValues({...formValues,[e.target.name]:e.target.value});
@@ -14,8 +15,10 @@ const NewCommentRedux = () => {
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        addOneComment(formValues);
-        setFormValues({name:"",email:"",body:""})
+        dispatch(addOneComment(formValues));
+        dispatch(fetchComments())
+        setFormValues({name:"",email:"",body:""});
+        
     }
    
     return ( 

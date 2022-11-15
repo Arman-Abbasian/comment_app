@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { fetchComment, noCommentSelected } from "../redux/comment/commentActions";
-import { deleteOneComment } from "../redux/comments/commentsActions";
+import { deleteCommentId, fetchComment, noCommentSelected } from "../redux/comment/commentActions";
+import { deleteOneComment, fetchComments } from "../redux/comments/commentsActions";
 
 const FullCommentRedux = () => {
     const comment=useSelector(state=>state.comment);
@@ -20,8 +20,9 @@ const FullCommentRedux = () => {
     },[]);
 
     const deleteHandler=(id)=>{
-        dispatch(deleteOneComment(id))
-        // deleteOneCommentId();
+        dispatch(deleteOneComment(id));
+        dispatch(fetchComments());
+        dispatch(deleteCommentId());
     }
 
     if(comment.message) return <p>{comment.message}</p>
