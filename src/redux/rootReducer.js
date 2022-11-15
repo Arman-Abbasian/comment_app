@@ -5,6 +5,6 @@ import commentsReducer from "./comments/commentsReducer";
 
 const rootReducer=combineReducers({
     comment:commentReducer,
-    commsts:commentsReducer
+    comments:commentsReducer
 });
 export default rootReducer;

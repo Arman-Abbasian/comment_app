@@ -1,32 +1,31 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch } from "react-redux";
 import { useComments, useCommentsActions, useSingleComment, useSingleCommentsActions } from "../Providers/CommentProvider";
+import { fetchTodos } from "../redux/comments/commentsActions";
 import CommentContext from "./CommentContext";
 
 
 const CommentListRedux = () => {
-    const comment=useSelector(state=>state);
-    console.log(state)
-    // const {initialLoading}=useCommentsActions();
-    // console.log(comment.error)
-
-    // const singleComment=useSingleComment();
-    // const {setNewId}=useSingleCommentsActions();
-    
-    console.log(comment);
+    const comments=useSelector(state=>state.comments);
+    const comment=useSelector(state=>state.comment);
+    const dispatch=useDispatch();
+    console.log(comments)
     useEffect(()=>{
-        // initialLoading();
-        // console.log(comment)
+        dispatch(fetchTodos());
+
     },[]);
-    // if (comment.loading) return <p>loading...</p>
-    // if (comment.error!=='') return <p>{comment.error.message}</p>
+    const clickHandler=(id)=>{
+        dispatch()
+    }
+    if (comments.loading) return <p>loading...</p>
+    if (comments.error!=='') return <p>{comments.error.message}</p>
     return ( 
         <div className="flex items-center justify-center flex-wrap gap-3 container mx-auto">
-            {/* {comment.comment.map(item=>(
+            {comments.comments.map(item=>(
                 <CommentContext key={item.id} name={item.name} email={item.email} 
-                clickHandler={()=>setNewId(item.id)}/>
-              ))} */}
+                clickHandler={()=>clickHandler(item.id)}/>
+              ))}
         </div>
      );
 }

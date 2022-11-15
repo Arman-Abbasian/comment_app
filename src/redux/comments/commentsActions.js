@@ -1,21 +1,21 @@
 import axios from "axios";
-import { ADD_ONE_COMMENT, DELETE_ONE_COMMENT,FETCH_TODOS_FAILURE, FETCH_TODOS_REQUEST, FETCH_TODOS_SUCCESS } from "./commentsType";
+import { ADD_ONE_COMMENT, DELETE_ONE_COMMENT,FETCH_COMMENTS_FAILURE,FETCH_COMMENTS_REQUEST,FETCH_COMMENTS_SUCCESS} from "./commentsType";
 
 
 const fetchTodosRequest=()=>{
     return{
-        type:FETCH_TODOS_REQUEST
+        type:FETCH_COMMENTS_REQUEST
     }
 };
 const fetchTodosFailure=(payload)=>{
     return{
-        type:FETCH_TODOS_FAILURE,
+        type:FETCH_COMMENTS_FAILURE,
         payload
     }
 };
 const fetchTodosSuccess=(payload)=>{
     return{
-        type:FETCH_TODOS_SUCCESS,
+        type:FETCH_COMMENTS_SUCCESS,
         payload
     }
 };
