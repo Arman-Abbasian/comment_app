@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_COMMENT_ID, FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED } from "./commentType";
+import { FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED, N_COMMENT_SELECTED } from "./commentType";
 
 const initialState={
     comment:{},
@@ -17,13 +17,14 @@ export const commentReducer=(state=initialState,action)=>{
         };
         case FETCH_ONE_COMMENT_FAILURE:{
             return {comment:{},error:action.payload,laoding:false,message:""}
-        };
+        }; 
         case NO_COMMENT_SELECTED:{
             return {comment:{},error:"",laoding:false,message:"click on one comment"}
         } ;
-        case DELETE_COMMENT_ID:{
+        case N_COMMENT_SELECTED:{
             return {comment:{},error:"",laoding:false,message:"click on one comment"}
-        }  
+        } ;
+        
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteCommentId} from "../redux/comment/commentActions";
+import { deleteCommentId, nCommentSelected} from "../redux/comment/commentActions";
 import { deleteOneComment, fetchComments } from "../redux/comments/commentsActions";
 
 const FullCommentRedux = () => {
@@ -11,7 +11,7 @@ const FullCommentRedux = () => {
     const deleteHandler=(id)=>{
         dispatch(deleteOneComment(id));
         dispatch(fetchComments());
-        dispatch(deleteCommentId());
+        dispatch(nCommentSelected());
     }
     console.log(comment)
     if(comment.message) return <p>{comment.message}</p>

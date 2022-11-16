@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import axios from "axios";
 import { DELETE_COMMENT_ID, FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED } from "./commentType";
 
@@ -33,16 +32,18 @@ export const fetchComment=(payload)=>{
         })
     }
 };
+
 export const noCommentSelected=()=>{
     return{
         type:NO_COMMENT_SELECTED
     }
 };
-export const deleteCommentId=()=>{
-    return {
-        return :DELETE_COMMENT_ID
+
+export const nCommentSelected=()=>{
+    return{
+        type:NO_COMMENT_SELECTED
     }
-}
+};
 
 
 
