@@ -2,12 +2,12 @@ import axios from "axios";
 import { ADD_ONE_COMMENT, DELETE_ONE_COMMENT,FETCH_COMMENTS_FAILURE,FETCH_COMMENTS_REQUEST,FETCH_COMMENTS_SUCCESS} from "./commentsType";
 
 
-const fetchCommentsRequest=()=>{
+export const fetchCommentsRequest=()=>{
     return{
         type:FETCH_COMMENTS_REQUEST
     }
 };
-const fetchCommentsFailure=(payload)=>{
+export const fetchCommentsFailure=(payload)=>{
     return{
         type:FETCH_COMMENTS_FAILURE,
         payload
@@ -25,6 +25,7 @@ export const fetchComments=()=>{
         dispatch(fetchCommentsRequest());
         axios.get(`http://localhost:4000/comments`)
         .then(res=>{
+            console.log(res.data)
             dispatch(fetchCommentsSuccess(res.data));
         })
         .catch(err=>{

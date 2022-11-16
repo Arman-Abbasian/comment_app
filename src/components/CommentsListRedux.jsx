@@ -11,16 +11,17 @@ const CommentListRedux = () => {
     const comments=useSelector(state=>state.comments);
     const comment=useSelector(state=>state.comment);
     const dispatch=useDispatch();
-
+    console.log(comments)
     useEffect(()=>{
+        console.log("use Effect")
         dispatch(fetchComments());
-
     },[]);
     const clickHandler=(id)=>{
         dispatch(fetchComment(id))
     }
     if (comments.loading) return <p>loading...</p>
     if (comments.error!=='') return <p>{comments.error.message}</p>
+    if(comments.comments===null) return <p>no comment existed</p>
     return ( 
         <div className="flex items-center justify-center flex-wrap gap-3 container mx-auto">
             {comments.comments.map(item=>(
