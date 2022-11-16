@@ -15,11 +15,10 @@ const NewCommentRedux = () => {
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        dispatch(fetchCommentsRequest())
         dispatch(addOneComment(formValues));
+        dispatch(fetchComments());
         setFormValues({name:"",email:"",body:""});
         toast.success("data added successfully");
-        dispatch(fetchComments());
     }
    
     return ( 

@@ -3,27 +3,26 @@ import { ADD_ONE_COMMENT, DELETE_ONE_COMMENT, FETCH_COMMENTS_FAILURE, FETCH_COMM
 import { fetchComments } from "./commentsActions";
 
 const initialState={
-    comments:null,
+    comments:[],
     error:"",
     laoding:false
 }
 export const commentsReducer=(state=initialState,action)=>{
     switch (action.type) {
         case FETCH_COMMENTS_REQUEST:{
-            return {comments:null,error:"",laoding:true}
+            return {comments:[],error:"",laoding:true}
         };
         case FETCH_COMMENTS_SUCCESS:{
             console.log(action.payload)
             return {comments:action.payload,error:"",laoding:false}
         };
         case FETCH_COMMENTS_FAILURE:{
-            return {comments:null,error:action.payload,laoding:false}
+            return {comments:[],error:action.payload,laoding:false}
         }
 
         case ADD_ONE_COMMENT:{
             axios.post(`http://localhost:4000/comments`,action.payload)
             .then(res=>{
-                state.comments.push(res.data);
                 console.log(state)
                 return state;
             })
@@ -32,12 +31,15 @@ export const commentsReducer=(state=initialState,action)=>{
         };
 
         case DELETE_ONE_COMMENT:{
+            console.log(action.payload)
             axios.delete(`http://localhost:4000/comments/${action.payload}`)
             .then(res=>{
-                return state;
+                console.log(res.data);
+                console.log({...state})
+                return {...state};
             })
             .catch(err=>console.log(err));
-            return state;
+            return {...state};
             
         }
             
