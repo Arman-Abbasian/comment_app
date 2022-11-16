@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED, N_COMMENT_SELECTED } from "./commentType";
+import { DELETE_COMMENT_SELECTED, FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED, N_COMMENT_SELECTED } from "./commentType";
 
 const initialState={
     comment:{},
@@ -21,7 +21,7 @@ export const commentReducer=(state=initialState,action)=>{
         case NO_COMMENT_SELECTED:{
             return {comment:{},error:"",laoding:false,message:"click on one comment"}
         } ;
-        case N_COMMENT_SELECTED:{
+        case DELETE_COMMENT_SELECTED:{
             return {comment:{},error:"",laoding:false,message:"click on one comment"}
         } ;
         

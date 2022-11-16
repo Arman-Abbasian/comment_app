@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_COMMENT_ID, FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED } from "./commentType";
+import { DELETE_COMMENT_ID, DELETE_COMMENT_SELECTED, FETCH_ONE_COMMENT_FAILURE, FETCH_ONE_COMMENT_REQUEST, FETCH_ONE_COMMENT_SUCCESS, NO_COMMENT_SELECTED } from "./commentType";
 
 
 const fetchCommentRequest=()=>{
@@ -39,9 +39,9 @@ export const noCommentSelected=()=>{
     }
 };
 
-export const nCommentSelected=()=>{
+export const deleteCommentSelected=()=>{
     return{
-        type:NO_COMMENT_SELECTED
+        type:DELETE_COMMENT_SELECTED
     }
 };
 
