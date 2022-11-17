@@ -6,8 +6,9 @@ import Discussion from "./container/Disscussion";
 import CommentProvider from "./Providers/CommentProvider";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { Provider } from "react-redux";
+
+
 //import store from './redux/store';
 import CommentListRedux from "./components/CommentsListRedux";
 import FullCommentRedux from "./components/FullCommentRedux";
@@ -47,8 +48,8 @@ function App() {
 
          <Provider store={store}>
             <CommentListReduxToolKit />
-            <FullCommentReduxToolKit />
-            <NewCommentReduxToolKit />
+            {/* <FullCommentReduxToolKit />
+            <NewCommentReduxToolKit /> */}
          </Provider>
 
 

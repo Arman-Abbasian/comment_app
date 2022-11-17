@@ -3,6 +3,6 @@ import commentsSlice from './commentsSlice';
 
 export  const store = configureStore({
   reducer: {
-    commetns:commentsSlice
+    comments:commentsSlice
   },
 });
