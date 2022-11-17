@@ -8,10 +8,22 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Provider } from "react-redux";
+//import store from './redux/store';
 import CommentListRedux from "./components/CommentsListRedux";
 import FullCommentRedux from "./components/FullCommentRedux";
 import NewCommentRedux from "./components/NewCommentRedux";
-import store from './redux/store';
+
+
+
+
+import {store} from './features/store';
+import CommentListReduxToolKit from './components/CommentsListReduxToolKit';
+import FullCommentReduxToolKit from "./components/FullCommentReduxToolKit";
+import NewCommentReduxToolKit from "./components/NewCommentReduxToolKit";
+
+
+
+
 import { Toaster } from 'react-hot-toast';
 
 
@@ -27,11 +39,19 @@ function App() {
             <NewCommentContext />
          </CommentProvider> */}
 
-         <Provider store={store}>
+         {/* <Provider store={store}>
             <CommentListRedux />
             <FullCommentRedux />
             <NewCommentRedux />
+         </Provider> */}
+
+         <Provider store={store}>
+            <CommentListReduxToolKit />
+            <FullCommentReduxToolKit />
+            <NewCommentReduxToolKit />
          </Provider>
+
+
 
          <Toaster />
          <ToastContainer />
