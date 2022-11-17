@@ -31,7 +31,7 @@ export const removeAsyncComment=createAsyncThunk("comments/removeAsyncComment", 
 const initialState = {
   comments:[],
   error:null,
-  loading:false
+  loading:false,
 }
 
 export const commentsSlice = createSlice({
@@ -52,13 +52,7 @@ export const commentsSlice = createSlice({
     },
 
     [addAsyncComment.fulfilled]: (state,action) => {
-      state.todos.push(action.payload)
-    },
-
-    [removeAsyncComment.fulfilled]: (state,action) => {
-      const remainedTodos=state.todos.filter(item=>item.id !== action.payload);
-      return {...state,todos:remainedTodos,loading:false,error:null}
-      
+      state.comments.push(action.payload)
     },
   }
 })

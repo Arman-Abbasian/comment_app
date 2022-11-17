@@ -48,8 +48,8 @@ function App() {
 
          <Provider store={store}>
             <CommentListReduxToolKit />
-            {/* <FullCommentReduxToolKit />
-            <NewCommentReduxToolKit /> */}
+            <FullCommentReduxToolKit />
+            {/* <NewCommentReduxToolKit /> */}
          </Provider>
 
 

@@ -1,8 +1,8 @@
 import { current } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import { useSelector ,useDispatch } from "react-redux";
+import { getAsyncComment } from "../features/commentSlice";
 import { getAsyncComments } from "../features/commentsSlice";
-import { fetchComment } from "../redux/comment/commentActions";
 import CommentReduxToolKit from "./CommentReduxToolKit";
 
 
@@ -16,19 +16,19 @@ const CommentsListReduxToolKit = () => {
     },[]);
 
     const clickHandler=(id)=>{
-        dispatch(fetchComment(id))
+        dispatch(getAsyncComment(id))
     }
 
     if (comments.loading) return <p>loading...</p>
     if (comments.error!==null) return <p>{comments.error.message}</p>
-    if(comments.comments===[]) return <p>no comment existed</p> 
+    if(comments.comments.length===0) return <p>no comment existed</p> 
 
     return ( 
         <div className="flex items-center justify-center flex-wrap gap-3 container mx-auto">
-                {comments.comments.map(item=>{
-               return  <CommentReduxToolKit key={item.id} name={item.name} email={item.email} 
-                clickHandler={()=>clickHandler(item.id)}/>
-            })}
+                {comments.comments.map(item=>(
+              <CommentReduxToolKit key={item.id} name={item.name} email={item.email} 
+                clickHandler={()=>clickHandler(item.id)} />
+            ))}
         </div>
      );
 }
