@@ -50,7 +50,10 @@ export const commentsSlice = createSlice({
     [getAsyncComments.rejected]: (state,action) => {
       return {comments:[],loading:false,error:action.payload}
     },
-
+    [removeAsyncComment.fulfilled]: (state,action) => {
+     const remaindComment= state.comments.filter(item=>item.id!==action.payload);
+     state.comments=remaindComment
+    },
     [addAsyncComment.fulfilled]: (state,action) => {
       state.comments.push(action.payload)
     },

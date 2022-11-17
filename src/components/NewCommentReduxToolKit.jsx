@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import {useSelector,useDispatch} from 'react-redux';
+import { addAsyncComment } from "../features/commentsSlice";
 import { addOneComment, fetchComments, fetchCommentsRequest } from "../redux/comments/commentsActions";
 
 const NewCommentReduxToolKit = () => {
@@ -15,8 +16,7 @@ const NewCommentReduxToolKit = () => {
 
     const submitHandler=(e)=>{
         e.preventDefault();
-        dispatch(addOneComment(formValues));
-        dispatch(fetchComments());
+        dispatch(addAsyncComment(formValues));
         setFormValues({name:"",email:"",body:""});
         toast.success("data added successfully");
     }

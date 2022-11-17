@@ -8,9 +8,8 @@ import CommentReduxToolKit from "./CommentReduxToolKit";
 
 const CommentsListReduxToolKit = () => {
     const comments=useSelector(state=>state.comments);
-    //const comment=useSelector(state=>state.comment);
     const dispatch=useDispatch();
-    console.log(comments)
+
     useEffect(()=>{
         dispatch(getAsyncComments());
     },[]);

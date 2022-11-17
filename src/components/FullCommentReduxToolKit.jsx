@@ -10,7 +10,6 @@ const FullCommentReduxToolKit = () => {
 
     const deleteHandler=(id)=>{
         dispatch(removeAsyncComment(id));
-        dispatch(getAsyncComments());
         dispatch(removeAsyncCommentId());
     }
     console.log(comment)

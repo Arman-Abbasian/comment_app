@@ -49,7 +49,7 @@ function App() {
          <Provider store={store}>
             <CommentListReduxToolKit />
             <FullCommentReduxToolKit />
-            {/* <NewCommentReduxToolKit /> */}
+            <NewCommentReduxToolKit />
          </Provider>
 
 
